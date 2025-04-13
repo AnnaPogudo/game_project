@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import logo from "./../assets/Images/gaming.png";
 import { HiMiniMagnifyingGlass, HiMiniMoon, HiMiniSun } from "react-icons/hi2";
 import { ThemeContext } from "../Context/ThemeCondext";
 function Header() {
-  const [toogle, setToogle] = useState(true);
+  // const [toogle, setToogle] = useState(true);
   const {theme,setTheme}=useContext(ThemeContext)
 
   useEffect (()=>{
@@ -20,19 +20,19 @@ function Header() {
         <input
           type="text"
           placeholder="Search Games"
-          className='px-2 bg-transparent dark:bg-amber-400 outline-none'
+          className='px-2 bg-transparent outline-none'
         />
       </div>
       <div>
         {theme =='light' ? (
           <HiMiniMoon
             className="text-[35px] bg-slate-200 text-black p-1 rounded-full cursor-pointer"
-            onClick={() => setTheme('dark')}
+            onClick={() => {setTheme('dark'); localStorage.setItem('theme','dark')}}
           />
         ) : (
           <HiMiniSun
             className="text-[35px] bg-slate-200 text-black p-1 rounded-full cursor-pointer"
-            onClick={() => setTheme('light')}
+            onClick={() =>{setTheme('light');localStorage.setItem('theme','light')}}
           />
         )}
       </div>
